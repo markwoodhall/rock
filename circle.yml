@@ -41,3 +41,11 @@ workflows:
           filters:
             branches:
               only: master
+   hourly:
+    triggers:
+      - schedule:
+          cron: "@hourly"
+          filters:
+            branches:
+              only:
+                - master
