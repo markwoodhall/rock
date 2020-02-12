@@ -13,6 +13,7 @@ aliases:
       echo "aws_access_key_id = $AWS_ACCESSKEY" >> ~/.aws/credentials
       echo "aws_secret_access_key = $AWS_SECRET_KEY" >> ~/.aws/credentials
       echo "region = $AWS_REGION" >> ~/.aws/credentials
+      sudo apt-get update
       sudo apt-get install git
       sudo apt-get install packer
 jobs:
