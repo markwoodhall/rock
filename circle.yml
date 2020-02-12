@@ -27,8 +27,6 @@ workflows:
   build-and-deploy:
     jobs:
       - deploy:
-          requires:
-            - deploy
           filters:
             branches:
               only: master
