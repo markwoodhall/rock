@@ -1,0 +1,32 @@
+version: 2.1
+
+# ------------------------------------------------------------------------------
+# Variables
+
+aliases:
+  - &setup_prerequisites
+    name: Setup prequisites
+    command: |
+      mkdir -p ~/.aws/
+      echo 'export PATH=~/.local/bin:$PATH' >> $BASH_ENV
+      echo "[$AWS_PROFILE]" >> ~/.aws/credentials
+      echo "aws_access_key_id = $AWS_ACCESSKEY" >> ~/.aws/credentials
+      echo "aws_secret_access_key = $AWS_SECRET_KEY" >> ~/.aws/credentials
+      echo "region = $AWS_REGION" >> ~/.aws/credentials
+jobs:
+  deploy:
+    steps:
+      - run:
+          <<: *setup_prerequisites
+      - checkout
+      - run:
+          name: Build and Deploy AMI
+          command: make
+workflows:
+  version: 2
+  deploy:
+    jobs:
+      - deploy
+        filters:
+          branches:
+            only: master
