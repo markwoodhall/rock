@@ -41,10 +41,10 @@ workflows:
           filters:
             branches:
               only: master
-  hourly:
+  monthly:
     triggers:
       - schedule:
-          cron: "35 * * * *"
+          cron: "5 1 1 * *"
           filters:
             branches:
               only:
