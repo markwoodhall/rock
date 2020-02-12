@@ -42,11 +42,12 @@ workflows:
             branches:
               only: master
   hourly:
+    triggers:
+      - schedule:
+          cron: "0 0 0/1 1/1 * ? *"
+          filters:
+            branches:
+              only:
+                - master
     jobs:
-      triggers:
-        - schedule:
-            cron: "0 0 0/1 1/1 * ? *"
-            filters:
-              branches:
-                only:
-                  - master
+      - build-and-deploy-ami
