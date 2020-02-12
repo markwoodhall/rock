@@ -24,9 +24,11 @@ jobs:
           command: make
 workflows:
   version: 2
-  deploy:
+  build-and-deploy:
     jobs:
-      - deploy
-        filters:
-          branches:
-            only: master
+      - deploy:
+          requires:
+            - deploy
+          filters:
+            branches:
+              only: master
