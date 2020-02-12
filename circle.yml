@@ -20,6 +20,7 @@ aliases:
       wget https://releases.hashicorp.com/packer/${VER}/packer_${VER}_linux_amd64.zip
       unzip packer_${VER}_linux_amd64.zip
       sudo mv packer /usr/local/bin
+      ln -nfs /usr/local/bin/packer /usr/local/bin/packer-io
       rm packer_${VER}_linux_amd64.zip
 jobs:
   deploy:
